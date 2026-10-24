@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f6f7fb" />
+  <title>Procrastinot — Make the next move count.</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><span class="brand-mark"><span>✳</span></span><span class="brand-word">procrastinot<span class="brand-dot">.</span><small>ACADEMIC COPILOT</small></span></div>
+    <div class="sidebar-caption">WORKSPACE</div>
+    <nav id="navigation" aria-label="Main navigation">
+      <button class="navitem active" data-nav="today"><span class="nav-icon">◫</span> Today <span class="nav-hint" id="nav-counter"></span></button>
+      <button class="navitem" data-nav="courses"><span class="nav-icon">▤</span> My courses</button>
+      <button class="navitem" data-nav="studio"><span class="nav-icon">✧</span> Study studio</button>
+      <button class="navitem" data-nav="exams"><span class="nav-icon">♧</span> Exam radar</button>
+      <button class="navitem" data-nav="sources"><span class="nav-icon">▧</span> Sources & evidence</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="side-mini"><span class="mini-orb"></span><div><b>Built with Gemini</b><small>Evidence-first intelligence</small></div></div>
+      <button class="navitem" data-nav="settings"><span class="nav-icon">⚙</span> Settings</button>
+      <div class="sidebar-foot">Made for the nights when<br/>everything feels due at once.</div>
+    </div>
+  </aside>
+  <div class="main-column">
+    <header class="topbar">
+      <div class="mobile-brand">✳ procrastinot.</div>
+      <div class="topbar-left" id="crumb">YOUR SPACE <span>/</span> TODAY</div>
+      <div class="top-actions"><span class="clock-pill" id="live-clock"></span><span class="status-pill" id="sync-badge"><span class="status-dot"></span> Local workspace</span><button class="avatar" aria-label="Settings" data-nav="settings">✦</button></div>
+    </header>
+    <main class="main-content" id="app-content"><div class="loading-screen"><div class="spinner"></div><p>Preparing your workspace…</p></div></main>
+  </div>
+</div>
+<div id="modal-root"></div>
+<div id="toast-area" aria-live="polite"></div>
+<script src="/static/app.js" defer></script>
+</body>
+</html>

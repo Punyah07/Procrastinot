@@ -1,0 +1,15 @@
+PROCRASTINOT — MAC QUICK START
+
+1. Open this folder in VS Code.
+2. Terminal > New Terminal.
+3. Run: bash setup_mac.sh
+4. Run: bash run_mac.sh
+5. Visit http://127.0.0.1:8501
+6. Connect Canvas, select courses, add your Gemini key in Settings and scan syllabi.
+
+Dashboard: upcoming tasks from today forward, with a separate recent past section.
+Course rules: Gemini extracts evidence-backed minimum homework requirements.
+If you have fulfilled one, confirm it yourself in the rule card; you can undo.
+Never treat a hidden assignment as submitted in Canvas.
+
+If port 8501 is busy, stop the old app first (Control+C).

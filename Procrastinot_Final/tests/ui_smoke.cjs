@@ -1,0 +1,21 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const fakeElements={};
+function el(id){return fakeElements[id]??=( {id,innerHTML:'',textContent:'',children:[],classList:{toggle(){}},addEventListener(){},append(){} });}
+const doc={getElementById:el,querySelectorAll:()=>[],querySelector:()=>null,activeElement:{tagName:'DIV'},addEventListener(){},createElement:()=>({className:'',textContent:'',remove(){}})};
+const ctx={document:doc,window:{scrollTo(){}},console,setInterval(){},setTimeout(){},fetch:async()=>({ok:true,json:async()=>({courses:[],events:[],metrics:{},worker:{},analysis:{},selected_course_ids:[],materials:[],connected:false})}),URL,Date,Set,JSON,Math,String,Number};
+vm.createContext(ctx);
+vm.runInContext(fs.readFileSync(require('path').join(__dirname,'../static/app.js'),'utf8'),ctx);
+const welcome=vm.runInContext('renderWelcome({connected:false,courses:[],worker:{state:"idle"}})',ctx);
+assert(welcome.includes('Connect to UCSD Canvas'));
+assert(welcome.includes('Pearson'));
+const demo=vm.runInContext('fakeData()',ctx);
+assert(demo.events.length===3);
+vm.runInContext('UI.demo=true;UI.view="today"',ctx);
+const html=vm.runInContext('renderToday(fakeData())',ctx);
+assert(html.includes('Written homework'));
+assert(html.includes('Fictional preview'));
+const studio=vm.runInContext('renderStudio(fakeData())',ctx);
+assert(studio.includes('Which task are we working on?'));
+const sources=vm.runInContext('renderSources(fakeData())',ctx);
+assert(sources.includes('Evidence, not guesses'));
+console.log('UI smoke checks: welcome / sample dashboard / studio / sources PASSED');
